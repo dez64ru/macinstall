@@ -2,7 +2,7 @@
 
 ### Install brew and all soft
 ```
-wget -O - https://raw.githubusercontent.com/Dez64ru/macinstall/main/install.sh | bash
+curl -s -L https://raw.githubusercontent.com/Dez64ru/macinstall/main/install.sh | bash
 ```
 
 ### Config ssh
