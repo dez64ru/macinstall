@@ -1,5 +1,8 @@
 ## My MacOS config
 
+#NOTICE
+This script not tested yet, if it broke your system - its just your choise
+
 ### Install brew and all soft
 ```
 curl -s -L https://raw.githubusercontent.com/Dez64ru/macinstall/main/install.sh | bash
