@@ -43,3 +43,9 @@ brew install --cask lulu
 
 echo install other
 brew install --cask qbittorrent the-unarchiver
+
+echo install fonts
+mkdir ~/.tmp && cd ~/.tmp
+curl -s -L https://github.com/kube/sf-mono-ligaturized/archive/refs/heads/master.zip -o fonts && unzip fonts
+mv sf-mono-ligaturized-master/ligaturized/* ~/Library/Fonts/
+rm -rf ~/.tmp && cd ~
