@@ -1,6 +1,6 @@
 ## My MacOS config
 
-#NOTICE
+# NOTICE
 This script not tested yet, if it broke your system - its just your choise
 
 ### Install brew and all soft
