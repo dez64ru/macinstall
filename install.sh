@@ -49,3 +49,7 @@ mkdir ~/.tmp && cd ~/.tmp
 curl -s -L https://github.com/kube/sf-mono-ligaturized/archive/refs/heads/master.zip -o fonts && unzip fonts
 mv sf-mono-ligaturized-master/ligaturized/* ~/Library/Fonts/
 rm -rf ~/.tmp && cd ~
+
+echo disable indexing
+sudo mdutil -i off /
+sudo mdutil -E /
