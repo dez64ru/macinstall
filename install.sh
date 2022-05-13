@@ -53,3 +53,6 @@ rm -rf ~/.tmp && cd ~
 echo disable indexing
 sudo mdutil -i off /
 sudo mdutil -E /
+
+echo enable show all files
+defaults write http://com.apple.Finder AppleShowAllFiles true
