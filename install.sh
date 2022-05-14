@@ -56,3 +56,9 @@ sudo mdutil -E /
 
 echo enable show all files
 defaults write http://com.apple.Finder AppleShowAllFiles true
+echo disable open this application
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+echo enable snap to grid desktop
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+echo disable write .DS_store
+defaults write com.apple.desktopservices DSDontWriteNetworkStores true
