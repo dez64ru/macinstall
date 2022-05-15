@@ -8,10 +8,10 @@ brew install git nvm
 npm install -g npkill
 
 echo 'init nvm'
-nvmpath="export NVM_DIR=\"$HOME/.nvm\"\n. \"/opt/homebrew/opt/nvm/nvm.sh\""
 [ -d "$HOME/.nvm" ] && mkdir ~/.nvm
-[ ! grep -q nvm ~/.zshrc ] && { echo "Install nvm path into /.zshrc"; echo "$nvmpath" > ~/.zshrc; }
-[ ! grep -q nvm ~/.bash_profile ] && { echo "Install nvm path into /.bash_profile"; echo "$nvmpath" > ~/.bash_profile; }
+nvmpath="export NVM_DIR=\"$HOME/.nvm\"\n. \"/opt/homebrew/opt/nvm/nvm.sh\""
+! grep -q nvm "$HOME/.zshrc" && { echo 'Install nvm path into /.zshrc'; echo "$nvmpath" > ~/.zshrc; }
+! grep -q nvm "$HOME/.bash_profile" && { echo 'Install nvm path into /.bash_profile'; echo "$nvmpath" > ~/.bash_profile; }
 
 echo 'install browsers'
 brew install --cask google-chrome tor-browser
@@ -39,16 +39,16 @@ echo 'install other'
 brew install --cask qbittorrent the-unarchiver
 
 echo 'install fonts'
-mkdir ~/.tmp && cd ~/.tmp
+mkdir ~/.tmp && cd ~/.tmp || return
 curl -s -L https://github.com/kube/sf-mono-ligaturized/archive/refs/heads/master.zip -o fonts && unzip fonts
 mv sf-mono-ligaturized-master/ligaturized/* ~/Library/Fonts/
-rm -rf ~/.tmp && cd ~
+rm -rf ~/.tmp && cd ~ || return
 
 echo 'disable indexing'
 sudo mdutil -i off /
 sudo mdutil -E /
 
-echo "\n"
+printf "\n"
 echo 'MacOs Tweaks'
 echo 'enable show all files'
 defaults write http://com.apple.Finder AppleShowAllFiles true
@@ -60,7 +60,7 @@ echo 'disable write .DS_store'
 defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
 echo 'Init crontab task for brew full update'
-sudo crontab -l > cron_bkp
-sudo echo "0 10 * * * brew update && brew upgrade && brew cleanup; brew doctor >/dev/null 2>&1" >> cron_bkp
-sudo crontab cron_bkp
-sudo rm cron_bkp
+crontab -l > cron_bkp
+echo "0 10 * * * brew update && brew upgrade && brew cleanup; brew doctor >/dev/null 2>&1" >> cron_bkp
+crontab cron_bkp
+rm cron_bkp
