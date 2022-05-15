@@ -65,4 +65,7 @@ echo disable write .DS_store
 defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
 echo brew uucd
+sudo crontab -l > cron_bkp
 sudo echo "0 10 * * * brew update && brew upgrade && brew cleanup; brew doctor >/dev/null 2>&1" >> cron_bkp
+sudo crontab cron_bkp
+sudo rm cron_bkp
