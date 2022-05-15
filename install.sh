@@ -5,6 +5,7 @@ echo install brew
 
 echo install core
 brew install git nvm
+npm install -g npkill
 
 nvmpath="export NVM_DIR=\"$HOME/.nvm\"\n. \"/opt/homebrew/opt/nvm/nvm.sh\""
 
@@ -62,3 +63,6 @@ echo enable snap to grid desktop
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 echo disable write .DS_store
 defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+
+echo brew uucd
+sudo echo "0 10 * * * brew update && brew upgrade && brew cleanup; brew doctor >/dev/null 2>&1" >> cron_bkp
