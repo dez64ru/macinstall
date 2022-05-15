@@ -1,42 +1,55 @@
 #!/bin/sh
 
-echo 'install brew'
+echo 'Install Brew'
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-echo 'install core'
-brew install git nvm
-npm install -g npkill
+echo 'Install packages'
+brew install \
+  git \
+  nvm \
+  ncdu
+  
+brew install --cask \
+  #browsers
+  google-chrome \
+  tor-browser \
+  #developer
+  visual-studio-code \
+  postman \
+  docker \
+  valentina-studio \
+  termius \
+  #social
+  asana \
+  linear-linear \
+  slack \
+  telegram \
+  #os-extends
+  raycast \
+  hiddenbar \
+  displaperture \
+  rectangle \
+  maccy \
+  #editors
+  figma \
+  notion \
+  #media
+  vlc \
+  #network
+  lulu \
+  #other
+  qbittorrent \
+  the-unarchiver
 
-echo 'init nvm'
+echo 'Init nvm'
 [ -d "$HOME/.nvm" ] && mkdir ~/.nvm
 nvmpath="export NVM_DIR=\"$HOME/.nvm\"\n. \"/opt/homebrew/opt/nvm/nvm.sh\""
 ! grep -q nvm "$HOME/.zshrc" && { echo 'Install nvm path into /.zshrc'; echo "$nvmpath" > ~/.zshrc; }
 ! grep -q nvm "$HOME/.bash_profile" && { echo 'Install nvm path into /.bash_profile'; echo "$nvmpath" > ~/.bash_profile; }
+nvm install stable
+nvm use stable
 
-echo 'install browsers'
-brew install --cask google-chrome tor-browser
-
-echo 'install devtools'
-brew install --cask visual-studio-code postman phpstorm docker valentina-studio termius
-
-echo 'install communication'
-brew install --cask asana
-brew install --cask linear-linear slack telegram
-
-echo 'install os extends'
-brew install --cask raycast hiddenbar displaperture rectangle maccy
-
-echo 'install editors'
-brew install --cask figma notion
-
-echo 'instal media'
-brew install --cask vlc
-
-echo 'install network'
-brew install --cask lulu
-
-echo 'install other'
-brew install --cask qbittorrent the-unarchiver
+npm install -g npkill
 
 echo 'install fonts'
 mkdir ~/.tmp && cd ~/.tmp || return
